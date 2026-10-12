@@ -212,3 +212,7 @@ Thank you, ViFork, for open-sourcing the foundation.
 - Every new build is published here as a GitHub Release; the
   `*-latest.apk` filenames stay constant so install codes and links keep
   working across versions.
+
+## v2.7.39 (2026-10-12)
+- Clean-rebuild recovery: v2.7.36-38 crashed on startup due to stale Gradle build state, not app code. Rebuilt from scratch (fresh daemon, clean task) — confirmed working on device.
+- Offline text classifier remains disabled as a precaution; all input routes directly to the LLM until the MediaPipe model path is properly fixed with diagnostics.

@@ -174,6 +174,12 @@ Thank you, ViFork, for open-sourcing the foundation.
   Scout now falls back to the LLM instead of showing "Classification failed
   to load" — Scout always responds
 
+### v2.7.37
+- Crash fix: reverted the ByteBuffer classifier loading from v2.7.36 — it
+  crashed in native code on startup. Back to the safe loading path.
+- Kept the LLM fallback: if the offline classifier is unavailable, Scout
+  falls back to the LLM instead of showing "Classification failed to load"
+
 ---
 
 - **v1.0** — Initial release: launch apps by package name (bypasses the

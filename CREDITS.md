@@ -180,6 +180,12 @@ Thank you, ViFork, for open-sourcing the foundation.
 - Kept the LLM fallback: if the offline classifier is unavailable, Scout
   falls back to the LLM instead of showing "Classification failed to load"
 
+### v2.7.38
+- Crash fix: disabled the offline text classifier entirely — it was crashing
+  on startup in v2.7.36/37. All input now routes directly to the LLM.
+- Scout responds to everything; the classifier will be re-enabled once the
+  MediaPipe native crash is root-caused
+
 ---
 
 - **v1.0** — Initial release: launch apps by package name (bypasses the

@@ -89,9 +89,83 @@ Thank you, ViFork, for open-sourcing the foundation.
 - Fixed ghost/jumbled text at the top of Settings when switching
   Simple/Advanced views
 
----
+### v2.7.20
+- Camera and screen-vision toggles in the normal chat bar (were
+  hands-free-only before)
+- In-app update checks: update banner plus a Settings check row, reading
+  version.json from the GitHub repo
 
-## What we changed and added — Outpost (Android TV app, our original code)
+### v2.7.21
+- Settings back navigation hardened: system back from the Memory and User
+  Guide sub-screens now returns to Settings (used to exit the app), plus a
+  backup system-back path at the chat level so Settings can never strand
+  you
+- "Set up phone locking" no longer fails silently: errors are reported
+  on screen with a fallback to system security settings, and the button
+  state refreshes when you return from the system setup screen
+- "Save my location now" now asks for location permission when missing
+  and always shows what happened ("Location saved." or the reason it
+  couldn't)
+
+### v2.7.22
+- Killed the ghost "Back to simple settings" text at the top of Settings:
+  the Simple/Advanced toggle is now a permanent button in the top bar,
+  and the old footer button that kept rendering as jumbled letters is gone
+- Manual "Check for updates" now bypasses the CDN cache so a just-published
+  version is found on the first tap
+
+### v2.7.23 – v2.7.29
+- Settings ghost-text overdraw fixes; footer moved into Scaffold's bottomBar
+  with navigation-bar insets so buttons sit above the system nav and stay tappable
+- Voice-optimized persona (SCOUT_PERSONA): livelier, more human conversational wording
+- In-app update checks (banner + Settings row) reading version.json
+
+### v2.7.30
+- TTS sentence-pause fix: Kokoro now synthesizes in 500-char chunks instead of
+  per-sentence, removing the unnatural pauses between sentences (maxNumSentences 1→10)
+- Settings space-savers: speech-recognition engine and text-to-speech engine
+  selectors converted from vertical cards to dropdown menus
+- "Use voice-optimized prompt" button: one-tap restore of the built-in voice-first
+  persona when a stale saved prompt overrides it
+
+### v2.7.31
+- "Warming up…" indicator: the 650MB Parakeet model takes ~30s to load on first
+  use — the app now shows a banner with a spinner instead of a mysteriously deaf mic
+- Automatic two-way translation: ML Kit Language Identification detects the input
+  language, then translates to the other side of the configured pair
+- Screen-off "Hey Scout": new foreground service (microphone type) keeps the
+  wake word listening with the screen off; persistent notification; "Listen with
+  screen off" toggle in Settings → Wake word
+
+### v2.7.33
+- **Human-sounding TTS overhaul**: text normalization (expands "Tue." → "Tuesday",
+  verbalizes numbers/dates/phone numbers, strips URLs/emojis), phonetic respelling
+  for mangles names, pause engineering via punctuation, persona teaches LLM to write
+  TTS-friendly text
+- **Audio DSP chain**: gentle EQ (tames harshness), subtle room reverb (live feel),
+  light compression (even loudness) — all via Android's built-in audio effects
+- **Per-chunk rate variation** (±3%): breaks monotone drone, humans never speak at
+  exactly the same rate
+- **Breath sounds**: subtle inhale between paragraphs — one of the strongest "human" cues
+
+### v2.7.32
+- Settings: "Check for updates" button renamed to "Update" (the check was
+  working fine — the label was just wordy)
+- Shield settings: "Reinstall Outpost on the Shield" now hides itself when
+  Outpost is already installed and answering (no more redundant reinstall prompt)
+
+### v2.7.34
+- **Slim build**: 67MB, down from 102MB — with zero features removed
+  - R8 minification + resource shrinking (native-library keep rules)
+  - 26MB MediaPipe classifier model (model.tflite) moved to
+    download-after-install — ships as a release asset, cached on first run
+
+### v2.7.35
+- **"How Scout talks & listens"** settings group: strength of personality,
+  how quickly Scout jumps in, and how well Scout hears you — now three
+  dropdowns in one place instead of scattered sliders
+
+---
 
 - **v1.0** — Initial release: launch apps by package name (bypasses the
   Leanback launcher), media transport keys, volume, wake/sleep — all over
@@ -102,6 +176,8 @@ Thank you, ViFork, for open-sourcing the foundation.
 - **v1.4** — `/apps` endpoint listing all installed apps including
   sideloaded ones; Android 11+ package-visibility fix (LEANBACK_LAUNCHER
   in the manifest `<queries>` block) so TV apps aren't hidden from the API
+- **v1.5** — In-app update checks on the TV (reads version.json from the
+  GitHub repo, same as Scout)
 
 ---
 

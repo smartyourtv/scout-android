@@ -165,6 +165,15 @@ Thank you, ViFork, for open-sourcing the foundation.
   how quickly Scout jumps in, and how well Scout hears you — now three
   dropdowns in one place instead of scattered sliders
 
+### v2.7.36
+- Removed the leftover duplicate End-of-speech pause / Ear sensitivity rows
+  from Settings (stragglers after the v2.7.35 grouped dropdowns)
+- Fixed offline classifier loading: the downloaded model.tflite is now loaded
+  via ByteBuffer instead of a filesystem path MediaPipe couldn't resolve
+- Classifier failure fallback: if the offline classifier is unavailable,
+  Scout now falls back to the LLM instead of showing "Classification failed
+  to load" — Scout always responds
+
 ---
 
 - **v1.0** — Initial release: launch apps by package name (bypasses the

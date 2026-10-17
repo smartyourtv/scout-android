@@ -186,6 +186,21 @@ Thank you, ViFork, for open-sourcing the foundation.
 - Scout responds to everything; the classifier will be re-enabled once the
   MediaPipe native crash is root-caused
 
+
+### v2.7.58
+- **Interpreter mode**: turn-based conversation translation with a three-tier
+  cascade (van Scout, Groq cloud, on-device ML Kit — always available offline)
+- **Laughing & emotions engine** with a one-tap self-test; **Dual Voice** mode
+- **BCPA9 Bluetooth fix**: Scout reuses the phone's existing stereo connection
+  instead of failing; new routed-device diagnostic shows where Scout's voice
+  actually plays
+- **Always listen** over the lock screen (VAD-gated) with diagnostics
+- **Mirror + Cast to Shield**, **phone theft-recovery** layer, and a
+  screen-aware **Shield control** screen (Outpost v2, pairing code from the TV)
+- Removed YouTube music search; added a selectable Edge voice (Kokoro stays
+  the default voice); name sync with the laptop Scout
+- Bug-hunt fixes: interpreter on-device tier initialization, theft-PIN
+  per-device salt, Bluetooth permission guards, translation timeouts
 ---
 
 - **v1.0** — Initial release: launch apps by package name (bypasses the
@@ -199,6 +214,10 @@ Thank you, ViFork, for open-sourcing the foundation.
   in the manifest `<queries>` block) so TV apps aren't hidden from the API
 - **v1.5** — In-app update checks on the TV (reads version.json from the
   GitHub repo, same as Scout)
+- **v1.6** — Screen-aware control: authenticated /v2 API (pairing code shown
+  on the TV), UI-tree reading + tap-by-element, screenshots, gestures,
+  guided setup checklist with on-TV deep links, mDNS discovery, and
+  Universal Outpost device profiles (Shield / Google TV / Fire TV tiers)
 
 ---
 

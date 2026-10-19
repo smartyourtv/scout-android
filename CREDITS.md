@@ -235,3 +235,12 @@ Thank you, ViFork, for open-sourcing the foundation.
 ## v2.7.39 (2026-10-12)
 - Clean-rebuild recovery: v2.7.36-38 crashed on startup due to stale Gradle build state, not app code. Rebuilt from scratch (fresh daemon, clean task) — confirmed working on device.
 - Offline text classifier remains disabled as a precaution; all input routes directly to the LLM until the MediaPipe model path is properly fixed with diagnostics.
+
+## v2.7.68 (2026-10-19) — laptop-standard voice upgrade
+- **Laugh bank replaces fragment-pulse emotions.** Chuckles, laughs, and sighs are now served from a bank of performed renders in the selected voice: the standard voice (am_adam) carries the same owner-approved 55-entry converted bank as laptop Scout; Duo's June (af_heart) carries a founding 12-entry bank from the same Chatterbox-Turbo pipeline, conditioned on a Kokoro af_heart reference. Fresh draw every time, never the same entry twice in a row, intensity matched (chuckle/laugh/full). Voices without a bank keep the v2.7.63 shaped synthesis and are labeled as such in Settings and the self-test.
+- **Serious-context gate (code, not prompt).** A van intruder alert opens a 10-minute serious window: playful emotion requests are refused in words, the self-test announces skips, and the audio path will not render a gated sound. Sigh/empathy are never gated.
+- **Pipelined speech.** Queued speech now chunks at ~240 characters at sentence boundaries so synthesis runs a chunk ahead of playback; short replies still speak as one continuous chunk.
+- **Speakable rule:** a standalone "911" is spoken "nine one one" (1911, phone numbers, and longer digit strings untouched).
+- **Self-test** (Settings → Interpreter, emotions & audio → "Hear the emotion self-test") plays the bank samples in the selected voice and ends with two clearly-announced breath auditions.
+- Engine unchanged (int8 Kokoro) after evaluation: the fp32 pack (~340 MB vs the int8 archive's ~132 MB) risks real-time factor on phone CPUs; the upgrade is production, not precision.
+- 154 unit tests green, incl. 22 new (bank picking/no-repeat/per-voice routing, gate policy, chunking, 911 rule).

@@ -244,3 +244,9 @@ Thank you, ViFork, for open-sourcing the foundation.
 - **Self-test** (Settings → Interpreter, emotions & audio → "Hear the emotion self-test") plays the bank samples in the selected voice and ends with two clearly-announced breath auditions.
 - Engine unchanged (int8 Kokoro) after evaluation: the fp32 pack (~340 MB vs the int8 archive's ~132 MB) risks real-time factor on phone CPUs; the upgrade is production, not precision.
 - 154 unit tests green, incl. 22 new (bank picking/no-repeat/per-voice routing, gate policy, chunking, 911 rule).
+
+## v2.7.69 (2026-10-19)
+
+- **June's laugh bank is now the full mirrored bank of 55** — every male slot (27 chuckles / 12 laughs / 16 full laughs) has a June-voiced counterpart, replacing her founding set of 12 from v2.7.68. Same source bank Ilona v0.4.0 ships (Chatterbox-Turbo conditioned on af_heart; owner-approved: founding takes by ear/word, the rest under his blanket waiver; the two rejected founding samples are not in the bank).
+- Catalog mirrors the male bank slot-for-slot; serving rules unchanged (fresh draw, never back-to-back, intensity fit). Male bank, sighs, breath auditions, EmotionGate, and the labeled shaped fallback for unbanked voices are unchanged.
+- 154 unit tests green.

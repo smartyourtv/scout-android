@@ -250,3 +250,9 @@ Thank you, ViFork, for open-sourcing the foundation.
 - **June's laugh bank is now the full mirrored bank of 55** — every male slot (27 chuckles / 12 laughs / 16 full laughs) has a June-voiced counterpart, replacing her founding set of 12 from v2.7.68. Same source bank Ilona v0.4.0 ships (Chatterbox-Turbo conditioned on af_heart; owner-approved: founding takes by ear/word, the rest under his blanket waiver; the two rejected founding samples are not in the bank).
 - Catalog mirrors the male bank slot-for-slot; serving rules unchanged (fresh draw, never back-to-back, intensity fit). Male bank, sighs, breath auditions, EmotionGate, and the labeled shaped fallback for unbanked voices are unchanged.
 - 154 unit tests green.
+
+## v2.7.71 (2026-10-20)
+
+- **Mic coexistence fix.** While Scout merely listened for "Hey Scout", he held the phone in call mode (MODE_IN_COMMUNICATION + a voice-communication capture) around the clock — and Android's concurrent-capture policy silences other apps' microphones in that state (proven by ADB dumpsys audio on the owner's phone: Ilona's capture flipped to "silenced" the moment Scout seized call mode). Wake-word listening and the mic self-test now use a voice-recognition capture that never touches call mode, so other voice apps keep their mics while Scout listens. Active conversation sessions keep call mode + echo cancellation exactly as before, released when the session ends. The wake-word diagnostics card now shows the live mic path in plain words.
+- **Audited laugh banks.** June's bank now carries the owner's by-ear re-audit (2026-10-20): 9 repaired slots (22, 27, 28, 30, 33, 40, 42, 45, 47 — dead-air cores trimmed; trailing/second lines cut on slots 22, 28 and 45), and the male bank's slot 5 is repaired the same way. All other 100 entries unchanged; files verified byte-exact against the approved audit masters.
+- 170 unit tests green (incl. LaughBankTest 10/10).
